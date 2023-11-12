@@ -1,0 +1,290 @@
+/*
+  custom colors
+  #000505
+  #3b3355
+  #5d5d81
+  #bfcde0
+  #fefcfd 
+*/
+
+.container {
+  border: 0px solid darkorange;
+  background: #f3f3f3;
+  display: grid;
+  gap: 32px;
+  justify-items: center;
+  padding: 8px 0 32px;
+}
+
+.container > * {
+  max-width: 1280px;
+  width: 100%;
+}
+
+/* Root Section */
+.root {
+  border: 0px solid yellow;
+  display: flex;
+  align-items: center;
+}
+
+.root > * {
+  padding: 2px 0;
+}
+
+.root .symbol {
+  padding: 0;
+}
+
+.arrow {
+  font-size: small;
+}
+
+/* About Section */
+.about {
+  border: 10px solid red;
+  background: #fff;
+  border: 1px solid #bfcde0;
+  border-radius: 12px;
+}
+
+.product-tabs {
+  border: 0px solid pink;
+  display: flex;
+  border-bottom: 1px solid #bfcde0;
+}
+
+.product-tabs:first-child {
+  padding-left: 24px;
+}
+
+.product-tabs h1 {
+  padding: 12px 24px;
+}
+
+.product-card {
+  border: 0px solid green;
+  display: flex;
+  /* height: 480px; */
+  padding: 32px 24px;
+}
+
+.description-left {
+  border: 0px solid crimson;
+  margin-right: 16px;
+  display: flex;
+  flex: 1;
+}
+
+.side-img-preview {
+  border: 0px solid purple;
+  width: 72px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.side-image {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-color: #bfcde0;
+  border-radius: 10px;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.side-image:hover {
+  border: 1px solid #bfcde0;
+}
+
+.side-image.active {
+  border: 1px solid #febd68;
+}
+
+.side-image img {
+  max-width: 40px;
+  max-height: 40px;
+}
+
+.img-preview {
+  border: 0px solid blue;
+  width: 100%;
+  max-height: 480px;
+  display: flex;
+  justify-content: center;
+}
+
+.main-image {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-image img {
+  max-height: 100%;
+  max-width: 90%;
+}
+
+.description-right {
+  margin-left: 16px;
+  border: 0px solid sandybrown;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.description-right > * {
+  margin-bottom: 24px;
+}
+
+.product-title {
+  border: 0px solid hotpink;
+  font-size: large;
+}
+
+.description-status {
+  border: 0px solid darkblue;
+  display: flex;
+  justify-content: space-between;
+}
+
+.available {
+  border: 0px solid slategray;
+  display: flex;
+
+  color: #ff0000;
+  background-color: #f9bfbf;
+
+  color: #04a12b;
+  background-color: #d3ffd8;
+
+  padding: 4px 8px;
+  border-radius: 16px;
+}
+
+.available .symbol {
+  padding-right: 2px;
+}
+
+.star-rating {
+  border: 0px solid chartreuse;
+}
+
+.buying {
+  border: 0px solid khaki;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid #bfcde0;
+  padding-bottom: 24px;
+}
+
+.price-box {
+  display: flex;
+  align-items: center;
+  text-wrap: nowrap;
+}
+
+.price {
+  font-size: xx-large;
+}
+
+.currency {
+  font-size: large;
+}
+
+.buy-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #febd68;
+  border: none;
+  padding: 12px 48px;
+  border-radius: 12px;
+  margin: 0 16px;
+}
+
+.credit-buy-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #febd68;
+  padding: 12px 48px;
+  border-radius: 12px;
+  text-wrap: nowrap;
+}
+
+.buy-button .symbol,
+.credit-buy-button .symbol {
+  padding-top: 2px;
+}
+
+.warranty {
+  border: 0px solid black;
+  display: flex;
+}
+
+.warranty-time,
+.warranty-exchange {
+  background-color: #bfcde0;
+  display: flex;
+  padding: 8px 16px;
+  border-radius: 12px;
+  text-wrap: nowrap;
+}
+
+.warranty-time {
+  margin-right: 16px;
+}
+
+.time-highlight {
+  font-weight: bold;
+}
+
+/* Characteristic Section */
+.characteristic {
+  border: 0px solid purple;
+}
+
+.title {
+  border: 0px solid rosybrown;
+  padding-bottom: 16px;
+}
+
+.card {
+  border: 0px solid aqua;
+  display: grid;
+  gap: 16px;
+  border: 10px solid red;
+  background: #fff;
+  border: 1px solid #bfcde0;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.group {
+  border: 0px solid seagreen;
+}
+
+.group-items {
+  border: 0px solid slateblue;
+  display: grid;
+  gap: 8px;
+}
+
+.row {
+  border: 0px solid salmon;
+  display: flex;
+}
+
+.row-element {
+  border: 0px solid burlywood;
+  flex: 1;
+  display: grid;
+}
