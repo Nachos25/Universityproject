@@ -25,4 +25,4 @@ For the second terminal run
 uvicorn main:app --reload
 ```
 
-You aare able to use this website :)
+You are able to use this website :)
