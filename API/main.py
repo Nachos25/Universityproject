@@ -21,4 +21,5 @@ def get_goods_info(text: str):
 
 @app.get("/api/get_good_info", tags=['main items'], description='Отримати інформацію про товар')
 async def get_good_info(text: str):
-    return await get_data(text)
+    result = get_data(text)
+    return result

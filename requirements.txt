@@ -1,0 +1,5 @@
+fastapi~=0.104.1
+beautifulsoup4~=4.12.2
+requests~=2.31.0
+httpx~=0.25.1
+Django~=4.2.7
