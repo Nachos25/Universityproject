@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{info.name}}</title>
+    <link rel="stylesheet" href="{% static 'main/css/style-shared.css' %}" />
+    <link rel="stylesheet" href="{% static 'main/css/style-item.css' %}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  </head>
+
+  <body>
+    <div id="headerContainer">
+      {% include "included_templates/header.html" %}
+    </div>
+
+    <div class="container">
+      <section class="root">
+        <div class="symbol">
+          <span class="material-symbols-outlined">home</span>
+        </div>
+        <span class="material-symbols-outlined">chevron_right</span>
+          <p>Техніка</p>
+        <span class="material-symbols-outlined">chevron_right</span>
+          <p>Переферія</p>
+        <span class="material-symbols-outlined">chevron_right</span>
+        <p>Миші</p>
+      </section>
+
+      <section class="about">
+        <div class="product-tabs">
+          <h1>Все про товар</h1>
+          <h1>Характеристики</h1>
+          <h1>Фото</h1>
+        </div>
+        <div class="product-card">
+          <div class="description-left">
+            <div class="side-img-preview">
+              {% for link in info.small_images%}
+                <div class="side-image"><img class="photo-small img" src="{{link}}" alt="card"/></div>
+              {% endfor %}
+            </div>
+
+            <div class="img-preview">
+              <div class="main-image"><img id="photo-big" alt="card" /></div>
+            </div>
+          </div>
+
+          <div class="description-right">
+            <div class="product-title">
+              <h1>{{info.name}}</h1>
+            </div>
+
+            <div class="description-status">
+              <div class="available">
+                <div class="symbol">
+                  <span class="material-symbols-outlined">check_circle</span>
+                  <!-- <span class="material-symbols-outlined">cancel</span> -->
+                </div>
+                <p>В наявності</p>
+              </div>
+
+              <div class="star-rating symbol">
+                <span class="material-symbols-outlined">star</span>
+                <span class="material-symbols-outlined">star</span>
+                <span class="material-symbols-outlined">star</span>
+                <span class="material-symbols-outlined">star</span>
+                <span class="material-symbols-outlined">star</span>
+              </div>
+            </div>
+
+            <div class="buying">
+              <div class="price-box">
+                <h1>
+                  <span class="price">{{info.offers.price}}</span>
+                  <span class="currency">{{info.offers.priceCurrency}}</span>
+                </h1>
+              </div>
+              <button class="buy-button">
+                <div class="symbol">
+                  <span class="material-symbols-outlined cart-icon">shopping_cart</span>
+                </div>
+                <h1>Купити</h1>
+              </button>
+              <button class="credit-buy-button">
+                <div class="symbol">
+                  <span class="material-symbols-outlined cart-icon">shopping_cart</span>
+                </div>
+                <h1>Купити в кредит</h1>
+              </button>
+            </div>
+
+            <div class="warranty">
+              <div class="warranty-time">
+                <div class="symbol">
+                  <span class="material-symbols-outlined">safety_check</span>
+                </div>
+                <p>Гарантія <span class="time-highlight">24 міс.</span></p>
+              </div>
+              <div class="warranty-exchange">
+                <div class="symbol">
+                  <span class="material-symbols-outlined">autorenew</span>
+                </div>
+                <p><span class="time-highlight">14 днів</span> обмін повернення</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="characteristic">
+        <div class="title">
+          <h1>Характеристики</h1>
+        </div>
+        <div class="card">
+          <div class="group-items">
+            {% for item in info.additionalProperty%}
+              <div class="row">
+                <div class="row-element">{{item.name}}</div>
+                <div class="row-element">{{item.value}}</div>
+              </div>
+            {% endfor %}
+<!--            <div class="row">-->
+<!--              <div class="row-element">Призначення</div>-->
+<!--              <div class="row-element">-->
+<!--                <p>Для ноутбуків</p>-->
+<!--                <p>Для ПК</p>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="row">-->
+<!--              <div class="row-element">Застосування</div>-->
+<!--              <div class="row-element">Для ігор</div>-->
+<!--            </div>-->
+<!--            <div class="row">-->
+<!--              <div class="row-element">Тип підключення</div>-->
+<!--              <div class="row-element">Дротове</div>-->
+<!--            </div>-->
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div id="footerContainer">
+      {% include "included_templates/footer.html" %}
+    </div>
+    <script>console.log("{{info|safe}}")</script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script type="text/javascript">
+      const sideImages = document.querySelectorAll(".side-image");
+      sideImages.forEach((image) => {
+          image.addEventListener("click", () => {
+              sideImages.forEach((image) => {
+                  image.classList.remove("active");
+              });
+              image.classList.add("active");
+          });
+      });
+      let small_images_text = "{{info.small_images|safe}}".replace(/'/g, '"')
+      let big_images_text = "{{info.big_images|safe}}".replace(/'/g, '"')
+      let smallImagesArray = JSON.parse(small_images_text)
+      let bigImagesArray = JSON.parse(big_images_text)
+      document.getElementById('photo-big').src = bigImagesArray[0]
+
+      $(document).ready(function() {
+        $('.photo-small').click(function() {
+          let srcFromImage = $(this).attr('src');
+          let index = smallImagesArray.indexOf(srcFromImage)
+          $('#photo-big').attr('src', bigImagesArray[index]);
+        });
+      });
+    </script>
+  </body>
+</html>

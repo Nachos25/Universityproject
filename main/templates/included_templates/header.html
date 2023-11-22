@@ -1,0 +1,67 @@
+{% load static %}
+<header>
+  <nav class="navbar">
+    <div class="nav-logo">
+      <a href="/"><img src="{% static 'main/images/shop_logo.png' %}" alt="logo" /></a>
+    </div>
+    <div class="address">
+      <a href="#" class="deliver">Доставка</a>
+      <div class="map-icon">
+        <span class="material-symbols-outlined">location_on</span>
+        <a href="#" class="location">Україна</a>
+      </div>
+    </div>
+
+    <div class="nav-search">
+      <select class="select-search">
+        <option>Все</option>
+        <option>Всі Категорії</option>
+      </select>
+      <input type="text" placeholder="Пошук" class="search-input" />
+      <div class="search-icon">
+        <span class="material-symbols-outlined">search</span>
+      </div>
+    </div>
+
+    <div class="sign-in">
+      <a href="#">
+        <p>Авторизація</p>
+        <span>Аккаунт</span>
+      </a>
+    </div>
+
+    <div class="returns">
+      <a href="#">
+        <p>Зв'язок</p>
+        <span>Чат-бот</span>
+      </a>
+    </div>
+
+    <div class="cart">
+      <a href="#">
+        <span class="material-symbols-outlined cart-icon">shopping_cart</span>
+      </a>
+      <p>Корзина</p>
+    </div>
+  </nav>
+
+  <div class="banner">
+    <div class="banner-content">
+      <div class="panel">
+        <span class="material-symbols-outlined">menu</span>
+        <a href="#">Все</a>
+      </div>
+
+      <ul class="links">
+        <!-- <li><a href="#">Today's Deals</a></li>
+          <li><a href="#">Customer Service</a></li>
+          <li><a href="#">Registry</a></li>
+          <li><a href="#">Gift Cards</a></li>
+          <li><a href="#">Sell</a></li> -->
+      </ul>
+      <div class="deals">
+        <!-- <a href="#">Shop deals in Electronics</a> -->
+      </div>
+    </div>
+  </div>
+</header>
