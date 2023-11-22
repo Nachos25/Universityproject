@@ -1,0 +1,21 @@
+{% load static %}
+<section id="items">
+  <div class="items">
+    {% for item in info %}
+    <div class="item">
+      <div class="img-container">
+        <a href="{{item.url}}"><img class="image" src="{{item.image}}" /></a>
+      </div>
+      <a href="#"><h4>{{ item.name }}</h4></a>
+      {% if 'price' in item %}
+        <h2>{{ item.price }} {{ item.priceCurrency }}</h2>
+        <button>купити</button>
+      {% else %}
+        <h5>Тільки по передзамовленню</h5>
+        <button>купити</button>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</section>
+

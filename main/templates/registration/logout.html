@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - My App{% endblock %}
+
+{% block header %}Home{% endblock %}
+
+{% block content %}
+  <p>Welcome, {{ user.username }}!</p>
+  <p>Email: {{ user.email }}</p>
+  <p><a href="{% url 'logout' %}">Logout</a></p>
+{% endblock %}
