@@ -3,8 +3,6 @@ import requests
 from bs4 import BeautifulSoup as BS
 import json
 from fake_useragent import UserAgent
-from requests import Session
-import httpx
 
 ua = UserAgent().random
 headers = {"User-Agent": ua}
@@ -48,21 +46,20 @@ def parser_for_goods(text):
     return json_info
 
 
-async def get_data(text):
-    async with httpx.AsyncClient() as client:
-        headers = {"User-Agent": ua}
-        response = await client.get(url=link+text, headers=headers)
-        content = response.text
+def get_data(text):
+    content = requests.get(url=link+text, headers=headers).text
     soup = BS(content, 'lxml')
     text_info = soup.find_all("script")[-13].text
+    try:
+        new_price = soup.find('span', class_='price-new__uah').get_text().replace(' грн', '')
+    except:
+        pass
     json_string_without_comments = '\n'.join(
         line for line in text_info.split('\n') if not line.strip().startswith('//'))
     data = json.loads(json_string_without_comments)
     name = soup.find('h1', class_='product-info__title_m').text
     # images_list = soup.find('section', class_='product').find_all('img', attrs={'title': name})
     images_list = soup.find('section', class_='product').find('div', class_='product-img__slider').find_all('img')
-    new_price=soup.find('span', class_='price-new__uah').get_text().replace(' грн', '')
-    print(new_price)
     for i in range(len(images_list)):
         item = images_list[i]
         images_list[i] = item.get('src')
@@ -74,5 +71,6 @@ async def get_data(text):
     data['small_images'] = small_images
     if 'price' in data['offers']:
         price = data['offers']['price']
+        data['new_price'] = new_price
         data['offers']['price'] = '{:,.0f}'.format(float(price)).replace(',', ' ')
     return data
