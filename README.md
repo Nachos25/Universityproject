@@ -22,6 +22,9 @@ python3 manage.py runserver 8001
 ```
 For the second terminal run 
 ```
+cd API
+```
+```
 uvicorn main:app --reload
 ```
 
