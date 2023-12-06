@@ -14,9 +14,6 @@ pip3 install -r requirements.txt
 python3 manage.py migrate
 ```
 ```
-open the second terminal in pycharm
-```
-```
 python3 manage.py runserver 8001
 ```
 
