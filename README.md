@@ -16,16 +16,8 @@ python3 manage.py migrate
 ```
 open the second terminal in pycharm
 ```
-For the first terminal run
 ```
 python3 manage.py runserver 8001
-```
-For the second terminal run 
-```
-cd API
-```
-```
-uvicorn main:app --reload
 ```
 
 You are able to use this website :)
