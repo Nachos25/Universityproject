@@ -4,11 +4,11 @@
     {% for item in info %}
     <div class="item">
       <div class="img-container">
-        <a href="{{item.url}}"><img class="image" src="{{item.image}}" /></a>
+        <a href="{{item.fields.link_to_good}}"><img class="image" src="{{item.fields.image}}" /></a>
       </div>
-      <a href="{{item.url}}"><h4>{{ item.name }}</h4></a>
-      {% if 'price' in item %}
-        <h2>{{ item.price }} {{ item.priceCurrency }}</h2>
+      <a href="{{item.fields.link_to_good}}"><h4>{{ item.fields.good_name }}</h4></a>
+      {% if 'price' in item.fields %}
+        <h2>{{ item.fields.price }} {{ item.fields.currency }}</h2>
         <button>купити</button>
       {% else %}
         <h5>Тільки по передзамовленню</h5>

@@ -1,33 +1,45 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Реєстрація</title>
-    <link rel="stylesheet" href="registration-style.css">
+    <link rel="stylesheet" href="{% static 'main/css/registration-style.css' %}">
 </head>
 <body>
     <div class="registration-form">
         <h2>Форма реєстрації</h2>
-        <form action="#" method="post">
-          <div class="form-group">
-            <label for="name">Ім'я:</label>
-            <input type="text" id="name" name="name" required>
-          </div>
-          <div class="form-group">
-            <label for="email">Електронна пошта:</label>
-            <input type="email" id="email" name="email" required>
-          </div>
-          <div class="form-group">
-            <label for="password">Пароль:</label>
-            <input type="password" id="password" name="password" required>
-          </div>
-          <div class="form-group">
-            <label for="confirm-password">Підтвердити пароль:</label>
-            <input type="password" id="confirm-password" name="confirm-password" required>
-          </div>
-          <button type="submit">Зареєструватися</button>
+        <form action="/register/" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_first_name">Ім'я:</label>
+                <input type="text" id="id_first_name" name="first_name" maxlength="150" required>
+            </div>
+            <div class="form-group">
+                <label for="id_last_name">Прізвище:</label>
+                <input type="text" id="id_last_name" name="last_name" maxlength="150" required>
+            </div>
+            <div class="form-group">
+                <label for="id_email">Електронна пошта:</label>
+                <input type="email" id="id_email" name="email" maxlength="320" required>
+            </div>
+            <div class="form-group">
+                <label for="id_password1">Пароль:</label>
+                <input type="password" id="id_password1" autocomplete="new-password" name="password1" required>
+            </div>
+            <div class="form-group">
+                <label for="id_password2">Підтвердити пароль:</label>
+                <input type="password" id="id_password2" name="password2" required>
+            </div>
+            <button type="submit">Зареєструватися</button>
         </form>
+        <p class="signup-link">Вже маєте акаунт?<a href="/login"> Увійти тут</a></p>
+        {% if messages %}
+            {% for message in messages %}
+              {% if message.tags %}<p class="{{ message.tags }}">{{ message }}</p>{% endif %}
+            {% endfor %}
+        {% endif %}
       </div>
 </body>
 </html>

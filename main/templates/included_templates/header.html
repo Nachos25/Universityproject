@@ -24,10 +24,16 @@
     </div>
 
     <div class="sign-in">
-      <a href="#">
-        <p>Авторизація</p>
-        <span>Аккаунт</span>
+      {% if user.is_authenticated %}
+      <a href="/home">
+        <p>{{user.first_name}} {{user.last_name}}</p>
       </a>
+      {% else %}
+      <a href="/login">
+        <p>Авторизація</p>
+        <span>Акаунт</span>
+      </a>
+      {% endif %}
     </div>
 
     <div class="returns">
@@ -38,10 +44,10 @@
     </div>
 
     <div class="cart">
-      <a href="#">
+      <a href="/cart">
         <span class="material-symbols-outlined cart-icon">shopping_cart</span>
       </a>
-      <p>Корзина</p>
+      <p>Кошик</p>
     </div>
   </nav>
 

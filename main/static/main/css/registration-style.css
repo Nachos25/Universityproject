@@ -53,3 +53,8 @@ body {
   button:hover {
     background-color: #45a049;
   }
+  .error {
+    border-color: #ff0000;
+    background-color: #ffeeee;
+    color: #ff0000;
+}

@@ -27,7 +27,7 @@
         <span class="material-symbols-outlined">chevron_right</span>
         <p>Миші</p>
       </section>
-
+      <button id="goBackButton">Назад</button>
       <section class="about">
         <div class="product-tabs">
           <h1>Все про товар</h1>
@@ -37,7 +37,7 @@
         <div class="product-card">
           <div class="description-left">
             <div class="side-img-preview">
-              {% for link in info.small_images%}
+              {% for link in info.fields.info_about_good.small_images%}
                 <div class="side-image"><img class="photo-small img" src="{{link}}" alt="card"/></div>
               {% endfor %}
             </div>
@@ -49,7 +49,7 @@
 
           <div class="description-right">
             <div class="product-title">
-              <h1>{{info.name}}</h1>
+              <h1>{{info.fields.good_name}}</h1>
             </div>
 
             <div class="description-status">
@@ -73,8 +73,8 @@
             <div class="buying">
               <div class="price-box">
                 <h1>
-                  <span class="price">{{info.offers.price}}</span>
-                  <span class="currency">{{info.offers.priceCurrency}}</span>
+                  <span class="price">{{info.fields.info_about_good.new_price}}</span>
+                  <span class="currency">{{info.fields.info_about_good.offers.priceCurrency}}</span>
                 </h1>
               </div>
               <button class="buy-button">
@@ -115,7 +115,7 @@
         </div>
         <div class="card">
           <div class="group-items">
-            {% for item in info.additionalProperty%}
+            {% for item in info.fields.info_about_good.additionalProperty%}
               <div class="row">
                 <div class="row-element">{{item.name}}</div>
                 <div class="row-element">{{item.value}}</div>
@@ -156,8 +156,8 @@
               image.classList.add("active");
           });
       });
-      let small_images_text = "{{info.small_images|safe}}".replace(/'/g, '"')
-      let big_images_text = "{{info.big_images|safe}}".replace(/'/g, '"')
+      let small_images_text = "{{info.fields.info_about_good.small_images|safe}}".replace(/'/g, '"')
+      let big_images_text = "{{info.fields.info_about_good.big_images|safe}}".replace(/'/g, '"')
       let smallImagesArray = JSON.parse(small_images_text)
       let bigImagesArray = JSON.parse(big_images_text)
       document.getElementById('photo-big').src = bigImagesArray[0]
@@ -169,6 +169,9 @@
           $('#photo-big').attr('src', bigImagesArray[index]);
         });
       });
+      document.getElementById("goBackButton").onclick = function() {
+            history.back();
+        };
     </script>
   </body>
 </html>
