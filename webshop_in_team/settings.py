@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'main'
+    'main',
+    'django_elasticsearch_dsl'
 ]
 
 MIDDLEWARE = [
@@ -60,6 +61,12 @@ CACHES = {
         }
     }
 }
+
+# ELASTICSEARCH_DSL = {
+#     "default": {
+#         "hosts": ["http://localhost:9200/"],
+#     },
+# }
 
 ROOT_URLCONF = 'webshop_in_team.urls'
 

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
@@ -12,7 +13,7 @@
 
   <body>
     <div id="headerContainer">
-      {% include "included_templates/header.html" %}
+      {% include "included_templates/header.html" with user=user %}
     </div>
 
     <div class="container">
@@ -32,7 +33,7 @@
 
       <section class="card">
 
-        
+
         <div class="category-settings">
           <div class="selected-filters">вибрані фільтри</div>
           <div class="settings">(за рейтингом)</div>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Головна</title>
+    <link rel="stylesheet" href="{% static 'main/css/style-shared.css' %}" />
+    <link rel="stylesheet" href="{% static 'main/css/style-main.css' %}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+  </head>
+
+  <body>
+    <div id="headerContainer">
+      {% include "included_templates/header.html" with user=user %}
+    </div>
+
+<!--    <img src="{% static 'main/images/eblan.png' %}" alt="" class="eblan"/>-->
+<!--    <section class="hero-section"">-->
+<!--      <a href="item.html" style="color: #3b3355">-->
+<!--        <h1 class="ahuet">ахуеть</h1>-->
+<!--      </a>-->
+<!--      <a href="category.html" style="color: #3b3355">-->
+<!--        <h1 class="ahuet">ахуеть</h1>-->
+<!--      </a>-->
+<!--      <a href="search.html" style="color: #3b3355">-->
+<!--        <h1 class="ahuet">ахуеть</h1>-->
+<!--      </a>-->
+<!--      <a href="cart.html" style="color: #3b3355">-->
+<!--        <h1 class="ahuet">ахуеть</h1>-->
+<!--      </a>-->
+<!--    </section>-->
+
+    <section class="shop-section">
+      <div class="shop-images">
+
+        {% for item in info %}
+          <div class="shop-link">
+            <h3>{{item.fields.category}}</h3>
+            <a href="{{item.fields.link_to_category}}"><img src="{{item.fields.image}}" alt="{{item.fields.category}}" /></a>
+            <a href="{{item.fields.link_to_category}}">Переглянути</a>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+    <div id="footerContainer">
+      {% include "included_templates/footer.html" %}
+    </div>
+  </body>
+</html>
