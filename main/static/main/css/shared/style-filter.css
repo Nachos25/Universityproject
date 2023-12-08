@@ -1,0 +1,99 @@
+.filter {
+  width: 280px;
+  color: #999;
+  background: #1d1d1d;
+  border: 1px solid #febd68;
+  border-radius: 12px;
+  padding: 8px;
+}
+
+.filter > hr {
+  margin: 8px 0;
+}
+
+.filter-title {
+  text-wrap: nowrap;
+}
+
+.filter-title h3 {
+  padding-left: 16px;
+}
+
+.expander {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4px 8px;
+}
+
+.expander > p {
+  font-weight: bold;
+}
+
+.price-range {
+  display: flex;
+  align-items: center;
+  color: #999;
+}
+
+.price-range input {
+  width: 95%;
+  height: 32px;
+  background-color: #1d1d1d;
+  border: 2px solid #999;
+  outline: none;
+  padding-left: 8px;
+  color: #999;
+  border-radius: 8px;
+}
+
+.apply {
+  margin-left: 8px;
+  min-width: 50px;
+  height: 32px;
+  border: none;
+  border-radius: 8px;
+  background-color: #febd68;
+  justify-content: center;
+}
+
+.collapsable ul li {
+  padding-left: 8px;
+  height: 32px;
+  display: flex;
+  align-items: baseline;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  background-color: #1d1d1d;
+  color: rgb(153 153 153 / 50%);
+  width: 16px;
+  height: 16px;
+  border: 0.15em solid currentColor;
+  border-radius: 0.15em;
+  transform: translateY(-0.075em);
+
+  display: grid;
+  place-content: center;
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+}
+
+input[type="checkbox"]:checked::before {
+  background-color: #febd68;
+  transform: scale(1);
+  transform-origin: bottom left;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+.separator {
+  border: 1px solid rgb(153 153 153 / 50%);
+  height: 0px;
+  margin: 16px 0;
+}

@@ -26,7 +26,7 @@ SECRET_KEY = SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["192.168.1.8", "127.0.0.1", "192.168.0.154", '172.20.10.2']
+ALLOWED_HOSTS = ["192.168.1.8", "127.0.0.1", "192.168.0.154", '172.20.10.2', '192.168.0.191']
 
 
 # Application definition
@@ -62,11 +62,11 @@ CACHES = {
     }
 }
 
-# ELASTICSEARCH_DSL = {
-#     "default": {
-#         "hosts": ["http://localhost:9200/"],
-#     },
-# }
+ELASTICSEARCH_DSL = {
+    "default": {
+        "hosts": ["http://localhost:9200/"],
+    },
+}
 
 ROOT_URLCONF = 'webshop_in_team.urls'
 
