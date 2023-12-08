@@ -62,11 +62,11 @@ CACHES = {
     }
 }
 
-# ELASTICSEARCH_DSL = {
-#     "default": {
-#         "hosts": ["http://localhost:9200/"],
-#     },
-# }
+ELASTICSEARCH_DSL = {
+    "default": {
+        "hosts": ["http://localhost:9200/"],
+    },
+}
 
 ROOT_URLCONF = 'webshop_in_team.urls'
 

@@ -14,3 +14,7 @@ class RegistrationForm(UserCreationForm):
 class CustomLoginForm(forms.Form):
     email = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
+
+
+class SearchForm(forms.Form):
+    search_term = forms.CharField(max_length=255)

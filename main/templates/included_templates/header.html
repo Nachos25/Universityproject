@@ -13,14 +13,13 @@
     </div>
 
     <div class="nav-search">
-      <select class="select-search">
-        <option>Все</option>
-        <option>Всі Категорії</option>
-      </select>
-      <input type="text" placeholder="Пошук" class="search-input" />
-      <div class="search-icon">
-        <span class="material-symbols-outlined">search</span>
-      </div>
+      <form method="post" action="search">
+        {% csrf_token %}
+        <input type="text" placeholder="Пошук" name="search_term" class="search-input" />
+        <div class="search-icon">
+          <button type="submit">search</button>
+        </div>
+      </form>
     </div>
 
     <div class="sign-in">
