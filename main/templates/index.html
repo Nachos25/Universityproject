@@ -5,8 +5,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Головна</title>
-    <link rel="stylesheet" href="{% static 'main/css/style-shared.css' %}" />
-    <link rel="stylesheet" href="{% static 'main/css/style-main.css' %}" />
+    <link rel="stylesheet" href="{% static 'main/css/shared/style-default.css' %}?version={% now 'U'%}" />
+    <link rel="stylesheet" href="{% static 'main/css/shared/style-header.css' %}?version={% now 'U'%}">
+    <link rel="stylesheet" href="{% static 'main/css/shared/style-footer.css' %}?version={% now 'U'%}">
+    <link rel="stylesheet" href="{% static 'main/css/styles/style-main.css' %}?version={% now 'U'%}" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
   </head>
 
@@ -15,7 +17,7 @@
       {% include "included_templates/header.html" with user=user %}
     </div>
 
-<!--    <img src="{% static 'main/images/eblan.png' %}" alt="" class="eblan"/>-->
+<!--    <img src="{% static 'main/images/eblan.png' %}?version={% now 'U'%}" alt="" class="eblan"/>-->
 <!--    <section class="hero-section"">-->
 <!--      <a href="item.html" style="color: #3b3355">-->
 <!--        <h1 class="ahuet">ахуеть</h1>-->

@@ -7,6 +7,9 @@ body {
     align-items: center;
     height: 100vh;
     background-color: #f4f4f4;
+    background-image: url("https://media.discordapp.net/attachments/699653340979789905/1182372153170087977/IMG_20231207_192417_858.jpg");
+    background-position: center center;
+    background-size: cover;
   }
   
   .login-form {
@@ -65,8 +68,3 @@ body {
   .signup-link a:hover {
     text-decoration: underline;
   }
-.error {
-    border-color: #ff0000;
-    background-color: #ffeeee;
-    color: #ff0000;
-}
