@@ -61,7 +61,6 @@ def default_page(request):
 
 def show_goods(request):
     text_param = request.GET.get('text', '')
-    print(text_param)
     info = Categories.objects.get(link_to_category="goods?page=1&text="+text_param)
     info_about_goods = info.goods.all()
     info = json.loads(serialize('json', info_about_goods))

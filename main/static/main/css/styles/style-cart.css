@@ -1,0 +1,137 @@
+.container {
+  background-color: #000;
+  display: grid;
+  gap: 32px;
+  justify-items: center;
+  padding: 32px 0;
+}
+
+.container > * {
+  max-width: 960px;
+  width: 100%;
+}
+
+.display {
+  background-color: #1d1d1d;
+  border-radius: 12px;
+  border: 1px solid #febd68;
+  display: grid;
+  padding: 8px 16px 16px;
+  color: #fff;
+}
+
+.items-display > span,
+.total span {
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.cart-item {
+  border-bottom: 2px solid #999;
+  display: flex;
+}
+
+.cart-item:last-child {
+  border-bottom: 3px solid rgb(153 153 153 / 50%);
+}
+
+.cart-item img {
+  width: 160px;
+  height: 160px;
+  align-self: center;
+}
+
+.img-container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.item-link {
+  padding-top: 16px;
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.pricing {
+  padding-top: 16px;
+  align-items: baseline;
+  display: flex;
+  gap: 16px;
+  padding-bottom: 8px;
+}
+
+.price-box {
+  color: #fff;
+  font-weight: bold;
+  text-wrap: nowrap;
+}
+
+.price-box > .price {
+  font-size: 30px;
+}
+
+.old-price-box {
+  color: rgb(153 153 153 / 50%);
+  font-weight: bold;
+  text-wrap: nowrap;
+}
+
+.old-price-box > .price {
+  font-size: 20px;
+  text-decoration: line-through;
+}
+
+.remove-button {
+  margin: 16px 16px 0 auto;
+}
+
+.remove-button span {
+  font-size: 32px;
+  cursor: pointer;
+}
+
+.confirmation {
+  display: flex;
+  gap: 32px;
+  padding-top: 16px;
+}
+
+.buy,
+.credit-buy {
+  height: 48px;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+
+.buy span , .credit-buy span {
+  font-size: xx-large;
+}
+
+.buy {
+  flex: 55%;
+  background-color: #febd68;
+  margin-left: 32px;
+}
+
+.credit-buy {
+  flex: 45%;
+  background-color: #999;
+  margin-right: 32px;
+}
+
+.total {
+  padding: 8px 32px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 3px solid rgb(153 153 153 / 50%);
+}
