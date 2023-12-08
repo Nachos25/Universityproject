@@ -3,17 +3,34 @@
   <div class="items">
     {% for item in info %}
     <div class="item">
-      <div class="img-container">
-        <a href="{{item.fields.link_to_good}}"><img class="image" src="{{item.fields.image}}" /></a>
+      <a href="{{item.fields.link_to_good}}">
+        <div class="img-container">
+          <img src="{{item.fields.image}}" />
+        </div>
+        <span>{{ item.fields.good_name }}</span>
+      </a>
+      <div class="info">
+        <div class="pricing">
+          {% if item.fields.price != 'Тільки по попередньому замовленню'%}
+          <div class="price-box">
+            <span class="price">{{ item.fields.info_about_good.new_price }} {{ item.fields.currency }}</span>
+          </div>
+          <div class="old-price-box">
+            <span class="price">{{ item.fields.info_about_good.offers.price }} {{ item.fields.currency }}</span>
+          </div>
+          {% else %}
+          <div class="price-box">
+            <span class="price">Тільки по передзамовленню</span>
+          </div>
+          {% endif %}
+        </div>
+        <button class="buy-button">
+          <div class="symbol">
+            <span class="material-symbols-outlined cart-icon">shopping_cart</span>
+          </div>
+          <h1>Купити</h1>
+        </button>
       </div>
-      <a href="{{item.fields.link_to_good}}"><h4>{{ item.fields.good_name }}</h4></a>
-      {% if 'price' in item.fields %}
-        <h2>{{ item.fields.price }} {{ item.fields.currency }}</h2>
-        <button>купити</button>
-      {% else %}
-        <h5>Тільки по передзамовленню</h5>
-        <button>купити</button>
-      {% endif %}
     </div>
     {% endfor %}
   </div>

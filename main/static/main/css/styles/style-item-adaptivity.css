@@ -1,0 +1,152 @@
+@media screen and (max-width: 1024px) {
+  .description-left {
+    justify-content: flex-end;
+    flex-direction: column-reverse;
+    flex: 0;
+    margin: 0;
+  }
+
+  .side-img-preview {
+    height: 48px;
+    max-width: 400px;
+    width: 100%;
+  }
+
+  .side-slider-container {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .side-slider {
+    flex-direction: row;
+  }
+
+  .side-slider:not(.side-slider:has(.side-image:nth-child(6))) {
+    width: 100%;
+  }
+
+  .side-slider:has(.side-image:nth-child(6)){
+    justify-content: flex-start;
+  }
+
+  .side-slider:has(.side-image:nth-child(6)) .side-image {
+    margin: 0 16px;
+    flex: 0 0 auto;
+  }
+}
+
+@media screen and (max-width: 926px) {
+  .hideable {
+    display: none;
+  }
+
+  .description-right {
+    margin-right: 0;
+  }
+
+  .description-title > h1 {
+    font-size: 1.2em;
+  }
+
+  .description-info {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .availability > * {
+    width: max-content;
+  }
+
+  .img-preview {
+    width: 320px;
+    height: 320px;
+  }
+
+  .main-image {
+    min-height: 320px;
+    min-width: 320px;
+  }
+
+  .main-image img { 
+    height: 320px;
+    width: 320px;
+  }
+
+  .side-img-preview {
+    max-width: 320px;
+  }
+
+  .side-slider:not(.side-slider:has(.side-image:nth-child(5))) {
+    width: 100%;
+  }
+  
+  .side-slider:has(.side-image:nth-child(5)){
+    justify-content: flex-start;
+  }
+
+  .side-slider:has(.side-image:nth-child(5)) .side-image {
+    margin: 0 16px;
+    flex: 0 0 auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .product-card {
+    flex-direction: column;
+    gap: 16px;
+    padding: 12px 8px;
+  }
+
+  .description-right {
+    margin: 0;
+  }
+
+  .hideable {
+    display: inline;
+  }
+
+  .product-tabs {
+    display: none;
+  }
+
+  .description-buying {
+    gap: 24px;
+  }
+}
+
+@media screen and (max-width: 528px) {
+  .hideable {
+    display: none;
+  }
+  
+  .description-buying {
+    gap: 16px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .description-buying > * {
+    width: min(80%, 320px);
+  }
+
+  .attribute-group-item {
+    display: grid;
+    grid-template-areas: "name dash" "text text";
+    grid-template-columns: min-content auto;
+    row-gap: 8px;
+  }
+
+  .attribute-name {
+    grid-area: name;
+    text-wrap: nowrap;
+  }
+
+  .attribute-dash {
+    grid-area: dash
+  }
+
+  .attribute-text {
+    grid-area: text;
+    padding-left: 8px;
+  }
+} 
