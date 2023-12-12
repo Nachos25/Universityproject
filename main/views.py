@@ -43,7 +43,7 @@ def login_view(request):
         except User.DoesNotExist:
             messages.error(request, 'Користувача з даним email не знайдено')
 
-    return render(request, 'registration/log-in.html', {'form':form})
+    return render(request, 'registration/log-in.html', {'form': form})
 
 
 def logout_view(request):
@@ -58,7 +58,7 @@ def default_page(request):
 
 def show_goods(request):
     text_param = request.GET.get('text', '')
-    info = Categories.objects.get(link_to_category="goods?page=1&text="+text_param)
+    info = Categories.objects.get(link_to_category="goods?page=1&text=" + text_param)
     info_about_goods = info.goods.all()
     info = json.loads(serialize('json', info_about_goods))
     paginator = Paginator(info, 15)
@@ -73,3 +73,6 @@ def show_item(request):
     info = json.loads(serialize('json', [info]))
     return render(request, 'item.html', {'info': info[0]})
 
+
+def cart(request):
+    return render(request, 'cart.html')

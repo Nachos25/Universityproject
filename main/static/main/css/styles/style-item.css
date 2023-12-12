@@ -16,6 +16,7 @@
   background-color: #1d1d1d;
   border-radius: 12px;
   border: 1px solid #febd68;
+  /* overflow: hidden; */
 }
 
 .filler {
@@ -157,6 +158,7 @@
   max-height: 100%;
   max-width: 100%;
   user-select: none;
+  overflow: hidden;
 }
 
 .description-right {
@@ -193,6 +195,7 @@
 
 .price-box > .price {
   font-size: 30px;
+  text-wrap: nowrap;
 }
 
 .old-price-box {
@@ -202,6 +205,7 @@
 
 .old-price-box > .price {
   font-size: 20px;
+  text-wrap: nowrap;
   text-decoration: line-through;
 }
 
@@ -314,6 +318,20 @@
   border: 1px solid #febd68;
   color: #fff;
   padding: 24px;
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.highlight {
+  font-size: x-large;
+  font-weight: bold;
+  padding: 16px 0 8px;
+  text-align: center;
+}
+
+.description-text {
+  text-indent: 32px;
 }
 
 /* Attributes Section */
@@ -368,7 +386,7 @@
 
 .attribute-text {
   color: #fff;
-  flex: 0 0 50%;
+  flex: 0 0 55%;
   font-size: 15px;
   font-weight: 500;
   line-height: 18px;

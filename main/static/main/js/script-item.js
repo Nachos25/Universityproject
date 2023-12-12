@@ -124,7 +124,7 @@ sideImages.forEach((image) => {
 });
 
 function scrollSideSlider() {
-    var scrollTreshold = (screenWidth > 926) ? 5 : 4; 
+    var scrollTreshold = (screenWidth > 926) ? 5 : 4;
     if (sideImages.length > scrollTreshold) {
         var axis = (screenWidth > 1024) ? 'Y' : 'X';
         var index = activeSideImage.classList[1];
@@ -140,3 +140,21 @@ function scrollSideSlider() {
         }
     }
 }
+
+const descriptionTextElement = document.querySelector(".description-card");
+const tripleSplit = descriptionTextElement.innerHTML.trim().split("   ");
+var finalDescription = [];
+descriptionTextElement.innerHTML.trim().split("  ").forEach((text) => {
+    finalDescription.push(`<p class="description-text">${text}</p>`)
+})
+descriptionTextElement.innerHTML = finalDescription.join("");
+
+const attributesTextList = document.querySelectorAll(".attribute-text");
+attributesTextList.forEach((textElement) => {
+    const textSplit = textElement.innerHTML.split('•');
+    if (textSplit.length == 1) {
+        textElement.innerHTML = `• ${textSplit[0]}`;
+    } else {
+        textElement.innerHTML = textSplit.slice(1).map((text) => '•' + text).join("<br>");
+    }
+})

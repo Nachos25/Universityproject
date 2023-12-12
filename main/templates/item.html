@@ -56,7 +56,6 @@
             <div class="description-info">
               <div class="pricing">
                 {% if info.fields.price != 'Тільки по попередньому замовленню'%}
-                <script>console.log("{{ info.fields.price }}")</script>
                 <div class="price-box">
                   <span class="price">{{ info.fields.info_about_good.new_price }} {{ info.fields.currency }}</span>
                 </div>
@@ -123,46 +122,7 @@
 
       <section class="description">
         <div class="description-card">
-          <h1>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam adipisci sequi quod porro tempora similique et voluptas ut dolorum autem, quos culpa qui eum. Ipsum
-            suscipit consequatur omnis harum magnam.
-          </h1>
-          <h1>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam adipisci sequi quod porro tempora similique et voluptas ut dolorum autem, quos culpa qui eum. Ipsum
-            suscipit consequatur omnis harum magnam.
-          </h1>
-          <h1>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam adipisci sequi quod porro tempora similique et voluptas ut dolorum autem, quos culpa qui eum. Ipsum
-            suscipit consequatur omnis harum magnam.
-          </h1>
-          <h1>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam adipisci sequi quod porro tempora similique et voluptas ut dolorum autem, quos culpa qui eum. Ipsum
-            suscipit consequatur omnis harum magnam.
-          </h1>
-          <h1>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam adipisci sequi quod porro tempora similique et voluptas ut dolorum autem, quos culpa qui eum. Ipsum
-            suscipit consequatur omnis harum magnam.
-          </h1>
-          <h1>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam adipisci sequi quod porro tempora similique et voluptas ut dolorum autem, quos culpa qui eum. Ipsum
-            suscipit consequatur omnis harum magnam.
-          </h1>
-          <h1>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam adipisci sequi quod porro tempora similique et voluptas ut dolorum autem, quos culpa qui eum. Ipsum
-            suscipit consequatur omnis harum magnam.
-          </h1>
-          <h1>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam adipisci sequi quod porro tempora similique et voluptas ut dolorum autem, quos culpa qui eum. Ipsum
-            suscipit consequatur omnis harum magnam.
-          </h1>
-          <h1>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam adipisci sequi quod porro tempora similique et voluptas ut dolorum autem, quos culpa qui eum. Ipsum
-            suscipit consequatur omnis harum magnam.
-          </h1>
-          <h1>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam adipisci sequi quod porro tempora similique et voluptas ut dolorum autem, quos culpa qui eum. Ipsum
-            suscipit consequatur omnis harum magnam.
-          </h1>
+          {{ info.fields.info_about_good.description }}
         </div>
       </section>
 

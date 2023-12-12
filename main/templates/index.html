@@ -13,29 +13,10 @@
   </head>
 
   <body>
-    <div id="headerContainer">
-      {% include "included_templates/header.html" with user=user %}
-    </div>
-
-<!--    <img src="{% static 'main/images/eblan.png' %}?version={% now 'U'%}" alt="" class="eblan"/>-->
-<!--    <section class="hero-section"">-->
-<!--      <a href="item.html" style="color: #3b3355">-->
-<!--        <h1 class="ahuet">ахуеть</h1>-->
-<!--      </a>-->
-<!--      <a href="category.html" style="color: #3b3355">-->
-<!--        <h1 class="ahuet">ахуеть</h1>-->
-<!--      </a>-->
-<!--      <a href="search.html" style="color: #3b3355">-->
-<!--        <h1 class="ahuet">ахуеть</h1>-->
-<!--      </a>-->
-<!--      <a href="cart.html" style="color: #3b3355">-->
-<!--        <h1 class="ahuet">ахуеть</h1>-->
-<!--      </a>-->
-<!--    </section>-->
+    {% include "included_templates/header.html" with user=user %}
 
     <section class="shop-section">
       <div class="shop-images">
-
         {% for item in info %}
           <div class="shop-link">
             <h3>{{item.fields.category}}</h3>
@@ -45,8 +26,7 @@
         {% endfor %}
       </div>
     </section>
-    <div id="footerContainer">
-      {% include "included_templates/footer.html" %}
-    </div>
+
+    {% include "included_templates/footer.html" %}
   </body>
 </html>
