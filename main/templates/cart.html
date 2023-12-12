@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -12,7 +13,7 @@
   </head>
 
   <body>
-    <div id="headerContainer"></div>
+    {% include "included_templates/header.html" %}
 
     <div class="container">
       <section class="display">
@@ -22,12 +23,19 @@
             <img src="../images/large-1.jpg" />
             <div class="item-info">
               <a href="#" class="item-link">Смартфон Samsung Galaxy Fold 5 12/512GB (Icy Blue) (Global)</a>
-              <div class="pricing">
-                <div class="price-box">
-                  <span class="price">999999 грн</span>
+              <div class="bottom-info">
+                <div class="pricing">
+                  <div class="price-box">
+                    <span class="price">999999 грн</span>
+                  </div>
+                  <div class="old-price-box">
+                    <span class="price">1000000 грн</span>
+                  </div>
                 </div>
-                <div class="old-price-box">
-                  <span class="price">1000000 грн</span>
+                <div class="amount">
+                  <span class="material-symbols-outlined symbol">add</span>
+                  <span class="amount-value">0</span>
+                  <span class="material-symbols-outlined symbol">remove</span>
                 </div>
               </div>
             </div>
@@ -58,7 +66,7 @@
       </section>
     </div>
 
-    <div id="footerContainer"></div>
+    {% include "included_templates/footer.html" %}
     <script src="script.js"></script>
   </body>
 </html>

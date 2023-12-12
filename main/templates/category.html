@@ -15,9 +15,7 @@
   </head>
 
   <body>
-    <div id="headerContainer">
-      {% include "included_templates/header.html" with user=user %}
-    </div>
+    {% include "included_templates/header.html" with user=user %}
 
     <div class="container">
       <section class="top-layout">
@@ -70,9 +68,7 @@
       </section>
     </div>
 
-    <div id="footerContainer">
-      {% include "included_templates/footer.html" %}
-    </div>
-  <script src="{% static 'main/js/category.js' %}?version={% now 'U'%}"></script>
+    {% include "included_templates/footer.html" %}
+    <script src="{% static 'main/js/category.js' %}?version={% now 'U'%}"></script>
   </body>
 </html>

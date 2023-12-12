@@ -24,6 +24,7 @@
       {% if user.is_authenticated %}
       <a href="/home">
         <p>{{user.first_name}} {{user.last_name}}</p>
+        <span>Акаунт</span>
       </a>
       {% else %}
       <a href="/login">
