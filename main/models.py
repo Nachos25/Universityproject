@@ -1,26 +1,28 @@
 from django.db import models
 
-
-class Goods(models.Model):
-    good_name = models.CharField(max_length=500, unique=True)
+class ShopGoods(models.Model):
+    product_name = models.CharField(max_length=500, unique=True)
     price = models.CharField(max_length=50)
     currency = models.CharField(max_length=10)
     image = models.CharField(max_length=300)
-    link_to_good = models.CharField(max_length=700)
-    info_about_good = models.JSONField()
+    link_to_product = models.CharField(max_length=700)
+    info_about_product = models.JSONField()
 
 
 class Categories(models.Model):
     category = models.CharField(max_length=500)
     link_to_category = models.CharField(max_length=760)
     image = models.CharField(max_length=800)
-    goods = models.ManyToManyField(Goods)
+    goods = models.ManyToManyField(ShopGoods)
 
 
-class Cart(models.Model):
-    good_id = models.CharField(max_length=15)
-    good_category = models.CharField(max_length=70)
-    user_id = models.CharField(max_length=10)
-    item_name = models.CharField(max_length=400)
-    image = models.CharField(max_length=600)
-    price = models.CharField(max_length=700)
+class Orders(models.Model):
+    email = models.CharField(max_length=500)
+    phone = models.CharField(max_length=500)
+    fullname = models.CharField(max_length=500)
+    region = models.CharField(max_length=500)
+    city = models.CharField(max_length=500)
+    price = models.CharField(max_length=20, default=None)
+    buying_method = models.CharField(max_length=20, default="default")
+    payment_method = models.CharField(max_length=500)
+    goods = models.CharField(max_length=100000)

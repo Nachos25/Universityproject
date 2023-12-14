@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Вхід</title>
+  <link rel="stylesheet" href="{% static 'main/css/style-log-in.css' %}">
+</head>
+<body>
+
+<div class="login-form">
+  <h2>Вхід на аккаунт</h2>
+  <form  action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="form-group">
+      <label for="id_email">Електронна пошта:</label>
+      <input type="email" id="id_email" name="email" required>
+    </div>
+    <div class="form-group">
+      <label for="id_password">Пароль:</label>
+      <input type="password" id="id_password" name="password" required>
+    </div>
+    <button type="submit">Увійти</button>
+  </form>
+  <p class="signup-link">Ще не маєте аккаунту? <a href="/register">Зареєструйтесь тут</a></p>
+  {% if messages %}
+    {% for message in messages %}
+      {% if message.tags %}<p class="{{ message.tags }}">{{ message }}</p>{% endif %}
+    {% endfor %}
+{% endif %}
+</div>
+
+</body>
+</html>

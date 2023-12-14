@@ -1,43 +1,71 @@
 {% load static %}
+{% load tagger %}
 <section id="items">
   <div class="items">
-    {% if searched %}
-      {% for item in info %}
-        {% for key, value in item.items %}
-          {% if forloop.last %}
-            <div class="item">
-              <div class="img-container">
-                <a href="{{value.link_to_good}}"><img class="image" src="{{value.image}}" /></a>
-              </div>
-              <a href="{{value.link_to_good}}"><h4>{{ value.good_name }}</h4></a>
-              {% if 'price' in value %}
-                <h2>{{ value.price }} {{ value.currency }}</h2>
-                <button>купити</button>
+    {% for item in info %}
+      <div class="item">
+        {% if item.fields.link_to_product %}
+          <a href="{{item.fields.link_to_product}}">
+            <div class="img-container">
+              <img class="image" src="{{item.fields.image}}" />
+            </div>
+          <span>{{ item.fields.product_name }}</span>
+          </a>
+          <div class="info">
+            <div class="pricing">
+              {% if item.fields.price != 'Тільки по попередньому замовленню'%}
+                <div class="price-box">
+                  <span class="price">{{ item.fields.info_about_product.new_price }} {{ item.fields.currency }}</span>
+                </div>
+                <div class="old-price-box">
+                  <span class="price">{{ item.fields.info_about_product.offers.price }} {{ item.fields.currency }}</span>
+                </div>
               {% else %}
-                <h5>Тільки по передзамовленню</h5>
-                <button>купити</button>
+                <div class="price-box">
+                  <span class="price">Тільки по передзамовленню</span>
+                </div>
               {% endif %}
             </div>
-          {% endif %}
-        {% endfor %}
-      {% endfor %}
-    {% else %}
-      {% for item in info %}
-        <div class="item">
+            <button class="buy-button" data-info='{"product_name": "{{item.fields.product_name}}", "image": "{{item.fields.image}}", "link_to_product": "{{item.fields.link_to_product}}", "currency": "{{item.fields.currency}}", "price": "{{item.fields.info_about_product.new_price}}", "old_price": "{{item.fields.info_about_product.offers.price}}"}'>
+            <div class="symbol">
+              <span class="material-symbols-outlined cart-icon">shopping_cart</span>
+            </div>
+          <h1>Купити</h1>
+        </button>
+      </div>
+      {% else %}
+      {% underscoreTag item "_source" as source %}
+        <a href="{{source.link_to_product}}">
           <div class="img-container">
-            <a href="{{item.fields.link_to_good}}"><img class="image" src="{{item.fields.image}}" /></a>
+            <img class="image" src="{{source.image}}" />
           </div>
-          <a href="{{item.fields.link_to_good}}"><h4>{{ item.fields.good_name }}</h4></a>
-          {% if 'price' in item.fields %}
-            <h2>{{ item.fields.info_about_good.offers.price }} {{ item.fields.currency }}</h2>
-            <button>купити</button>
-          {% else %}
-            <h5>Тільки по передзамовленню</h5>
-            <button>купити</button>
-          {% endif %}
+          <span>{{ source.product_name }}</span>
+        </a>
+        <div class="info">
+          <div class="pricing">
+            {% if source.price != 'Тільки по попередньому замовленню'%}
+            <div class="price-box">
+              <span class="price">{{ source.info_about_product.new_price }} {{ source.currency }}</span>
+            </div>
+            <div class="old-price-box">
+              <span class="price">{{ source.info_about_product.offers.price }} {{ source.currency }}</span>
+            </div>
+            {% else %}
+            <div class="price-box">
+              <span class="price">Тільки по передзамовленню</span>
+            </div>
+            {% endif %}
+          </div>
+          <button class="buy-button" data-info='{"product_name": "{{source.product_name}}", "image": "{{source.image}}", "link_to_product": "{{source.link_to_product}}", "currency": "{{source.currency}}", "price": "{{source.info_about_product.new_price}}", "old_price": "{{source.info_about_product.offers.price}}"}'>
+            <div class="symbol">
+              <span class="material-symbols-outlined cart-icon">shopping_cart</span>
+            </div>
+            <h1>Купити</h1>
+          </button>
         </div>
-      {% endfor %}
-    {% endif %}
+      {% endif %}
+    </div>
+    {% endfor %}
   </div>
 </section>
 

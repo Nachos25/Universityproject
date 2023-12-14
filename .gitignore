@@ -3,3 +3,5 @@ venv
 .DS_Store
 _pycache_
 elasticsearch-8.11.1
+main/documents.py
+storage

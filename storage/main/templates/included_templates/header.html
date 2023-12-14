@@ -1,0 +1,71 @@
+{% load static %}
+<header>
+  <nav class="navbar">
+    <div class="nav-logo">
+      <a href="/"><img src="{% static 'main/images/shop_logo.png' %}" alt="logo" /></a>
+    </div>
+
+    <div class="address">
+      <a href="#" class="deliver">Доставка</a>
+      <div class="map-icon">
+        <span class="material-symbols-outlined">location_on</span>
+        <a href="#" class="location">Україна</a>
+      </div>
+    </div>
+      <form method="post" action="/goods/search" class="nav-search">
+        {% csrf_token %}
+        <input type="text" placeholder="Пошук" value="{{searched}}" name="search_term" class="search-input" />
+        <div class="search-icon">
+          <span class="material-symbols-outlined">search</span>
+        </div>
+      </form>
+
+    <div class="sign-in">
+      {% if user.is_authenticated %}
+      <a href="/home">
+        <p>{{user.first_name}} {{user.last_name}}</p>
+        <span>Акаунт</span>
+      </a>
+      {% else %}
+      <a href="/login">
+        <p>Авторизація</p>
+        <span>Акаунт</span>
+      </a>
+      {% endif %}
+    </div>
+
+    <div class="returns">
+      <a href="#">
+        <p>Зв'язок</p>
+        <span>Чат-бот</span>
+      </a>
+    </div>
+
+    <div class="cart">
+      <a class="cart_text" href="/cart">
+        <span class="material-symbols-outlined cart-icon">shopping_cart</span>
+        Кошик
+      </a>
+    </div>
+  </nav>
+
+  <div class="banner">
+    <div class="banner-content">
+      <div class="panel">
+        <span class="material-symbols-outlined">menu</span>
+        <a href="#">Все</a>
+      </div>
+
+      <ul class="links">
+        <!-- <li><a href="#">Today's Deals</a></li>
+          <li><a href="#">Customer Service</a></li>
+          <li><a href="#">Registry</a></li>
+          <li><a href="#">Gift Cards</a></li>
+          <li><a href="#">Sell</a></li> -->
+      </ul>
+      <div class="deals">
+        <!-- <a href="#">Shop deals in Electronics</a> -->
+      </div>
+    </div>
+  </div>
+</header>

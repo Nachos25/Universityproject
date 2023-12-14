@@ -1,17 +1,18 @@
 from django.contrib import admin
-from .models import Categories, Cart, Goods
+from .models import Categories, ShopGoods, Orders
 
 
 class GoodsInline(admin.TabularInline):
     model = Categories.goods.through
 
 
-@admin.register(Goods)
+@admin.register(ShopGoods)
 class CategoriesAdmin(admin.ModelAdmin):
-    model = Goods
+    model = ShopGoods
     inlines = [GoodsInline]
 
 
 admin.site.register(Categories)
-admin.site.register(Cart)
+admin.site.register(Orders)
+
 

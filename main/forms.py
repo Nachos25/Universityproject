@@ -18,3 +18,15 @@ class CustomLoginForm(forms.Form):
 
 class SearchForm(forms.Form):
     search_term = forms.CharField(max_length=255)
+
+
+class OrderForm(forms.Form):
+    email = forms.EmailField()
+    phone = forms.CharField()
+    fullname = forms.CharField()
+    region = forms.CharField()
+    city = forms.CharField()
+    price = forms.CharField()
+    buying_method = forms.CharField()
+    payment_method = forms.ChoiceField(choices=[('card', 'Карткою'), ('cash', 'Готівкою'), ('paypal', 'PayPal')], label="Спосіб оплати")
+    goods = forms.CharField()

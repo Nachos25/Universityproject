@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
@@ -5,79 +6,72 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Товари</title>
-    <link rel="stylesheet" href="{% static 'main/css/style-shared.css' %}?version={% now 'U' %}" />
-    <link rel="stylesheet" href="{% static 'main/css/style-category.css' %}?version={% now 'U' %}" />
+    <link rel="stylesheet" href="{% static 'main/css/shared/style-default.css' %}?version={% now 'U'%}" />
+    <link rel="stylesheet" href="{% static 'main/css/shared/style-header.css' %}?version={% now 'U'%}" />
+    <link rel="stylesheet" href="{% static 'main/css/shared/style-footer.css' %}?version={% now 'U'%}" />
+    <link rel="stylesheet" href="{% static 'main/css/shared/style-items.css' %}?version={% now 'U'%}" />
+    <link rel="stylesheet" href="{% static 'main/css/styles/style-category.css' %}?version={% now 'U'%}" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   </head>
 
   <body>
-    <div id="headerContainer">
-      {% include "included_templates/header.html" with user=user searched=searched %}
-    </div>
+    {% include "included_templates/header.html" with user=user %}
 
     <div class="container">
       <section class="top-layout">
-        <div class="root">
-          <div class="symbol"><span class="material-symbols-outlined">home</span></div>
-          <span class="material-symbols-outlined">chevron_right</span>
-          <p>Техніка</p>
-          <span class="material-symbols-outlined">chevron_right</span>
-          <p>Переферія</p>
-          <span class="material-symbols-outlined">chevron_right</span>
-          <p>Миші</p>
-        </div>
-
-        <h1 class="category-name">Миші</h1>
+        <h1 class="category-name">класс</h1>
       </section>
 
       <section class="card">
-
-
-        <div class="category-settings">
-          <div class="selected-filters">вибрані фільтри</div>
-          <div class="settings">(за рейтингом)</div>
+        <div id="itemsContainer">
+          {% include "included_templates/items.html" with info=info %}
         </div>
-        <div class="content">
-          <div id="filterContainer">
-            {% include "included_templates/filter.html" %}
-          </div>
-          <div id="itemsContainer">
-            {% include "included_templates/items.html" with info=info searched=searched %}
-          </div>
+        <div class="pagination">
+          {% if info.has_previous %}
+          <a href="?page=1&text={{ searched }}" class="first symbol">
+            <span class="material-symbols-outlined symbol">chevron_left</span>
+            <span class="material-symbols-outlined symbol">chevron_left</span>
+          </a>
+          <a href="?page={{ info.previous_page_number }}&text={{ searched }}" class="previous symbol">
+            <span class="material-symbols-outlined symbol">chevron_left</span>
+          </a>
+          {% else %}
+          <a href="#" class="first symbol" style="z-index: -1;">
+            <span class="material-symbols-outlined symbol">chevron_left</span>
+            <span class="material-symbols-outlined symbol">chevron_left</span>
+          </a>
+          <a href="#" class="previous symbol" style="z-index: -1;">
+            <span class="material-symbols-outlined symbol">chevron_left</span>
+          </a>
+          {% endif %}
+
+          <span class="current">{{ info.number }}/{{ info.paginator.num_pages }}</span>
+
+          {% if info.has_next %}
+          <a href="?page={{ info.next_page_number }}&text={{ searched }}" class="next symbol">
+            <span class="material-symbols-outlined symbol">chevron_right</span>
+          </a>
+          <a href="?page={{ info.paginator.num_pages }}&text={{ searched }}" class="last symbol">
+            <span class="material-symbols-outlined symbol">chevron_right</span>
+            <span class="material-symbols-outlined symbol">chevron_right</span>
+          </a>
+          {% else %}
+          <a href="#" class="next symbol" style="z-index: -1;">
+            <span class="material-symbols-outlined symbol">chevron_right</span>
+          </a>
+          <a href="#" class="last symbol" style="z-index: -1;">
+            <span class="material-symbols-outlined symbol">chevron_right</span>
+            <span class="material-symbols-outlined symbol">chevron_right</span>
+          </a>
+          {% endif %}
         </div>
       </section>
-      <div class="pagination">
-        <span class="step-links">
-            {% if info.has_previous %}
-              {% if searched %}
-                <a href="?page=1&text={{ searched }}" class="sliding-button">&laquo; first</a>
-                <a href="?page={{ info.previous_page_number }}&text={{ searched }}" class="sliding-button">previous</a>
-              {% else %}
-                <a href="?page=1&text={{ text }}" class="sliding-button">&laquo; first</a>
-                <a href="?page={{ info.previous_page_number }}&text={{ text }}" class="sliding-button">previous</a>
-              {% endif %}
-            {% endif %}
-
-            <span class="current">
-                Page {{ info.number }} of {{ info.paginator.num_pages }}.
-            </span>
-
-            {% if info.has_next %}
-              {% if searched %}
-                <a href="?page={{ info.next_page_number }}&text={{ searched }}" class="sliding-button">next</a>
-                <a href="?page={{ info.paginator.num_pages }}&text={{ searched }}" class="sliding-button">last &raquo;</a>
-              {% else %}
-                <a href="?page={{ info.next_page_number }}&text={{ text }}" class="sliding-button">next</a>
-                <a href="?page={{ info.paginator.num_pages }}&text={{ text }}" class="sliding-button">last &raquo;</a>
-              {% endif %}
-            {% endif %}
-        </span>
-      </div>
     </div>
 
-    <div id="footerContainer">
-      {% include "included_templates/footer.html" %}
-    </div>
-  <script src="{% static 'main/js/category.js' %}"></script>
+    {% include "included_templates/footer.html" %}
+    <script src="{% static 'main/js/category.js' %}?version={% now 'U'%}"></script>
+    <script src="{% static 'main/js/search_func.js' %}?version={% now 'U'%}"></script>
+    <script src="{% static 'main/js/cart.js' %}?version={% now 'U'%}"></script>
+    <script src="{% static 'main/js/check_cart.js' %}?version={% now 'U'%}"></script>
   </body>
 </html>

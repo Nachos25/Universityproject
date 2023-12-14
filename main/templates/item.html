@@ -4,80 +4,86 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{info.searched}}</title>
-    <link rel="stylesheet" href="{% static 'main/css/style-shared.css' %}?version={% now 'U' %}" />
-    <link rel="stylesheet" href="{% static 'main/css/style-item.css' %}?version={% now 'U' %}" />
+    <title>{{info.fields.good_name}}</title>
+    <link rel="stylesheet" href="{% static 'main/css/shared/style-default.css' %}?version={% now 'U'%}" />
+    <link rel="stylesheet" href="{% static 'main/css/shared/style-header.css' %}?version={% now 'U'%}">
+    <link rel="stylesheet" href="{% static 'main/css/shared/style-footer.css' %}?version={% now 'U'%}">
+    <link rel="stylesheet" href="{% static 'main/css/styles/style-item.css' %}?version={% now 'U'%}" />
+    <link rel="stylesheet" href="{% static 'main/css/styles/style-item-adaptivity.css' %}?version={% now 'U'%}" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   </head>
 
   <body>
-    <div id="headerContainer">
-      {% include "included_templates/header.html" %}
-    </div>
+    {% include "included_templates/header.html" %}
 
     <div class="container">
-      <section class="root">
-        <div class="symbol">
-          <span class="material-symbols-outlined">home</span>
-        </div>
-        <span class="material-symbols-outlined">chevron_right</span>
-          <p>Техніка</p>
-        <span class="material-symbols-outlined">chevron_right</span>
-          <p>Переферія</p>
-        <span class="material-symbols-outlined">chevron_right</span>
-        <p>Миші</p>
-      </section>
-      <button id="goBackButton">Назад</button>
       <section class="about">
+        <div class="filler"></div>
         <div class="product-tabs">
-          <h1>Все про товар</h1>
-          <h1>Характеристики</h1>
-          <h1>Фото</h1>
+          <h1 class="tab product">Все про товар</h1>
+          <h1 class="tab desc">Опис</h1>
+          <h1 class="tab chars">Характеристики</h1>
         </div>
         <div class="product-card">
           <div class="description-left">
             <div class="side-img-preview">
-              {% for link in info.fields.info_about_good.small_images%}
-                <div class="side-image"><img class="photo-small img" src="{{link}}" alt="card"/></div>
-              {% endfor %}
+              <div class="side-slider-container">
+                <div class="side-slider">
+                  {% for link in info.fields.info_about_product.small_images%}
+                  <div class="side-image"><img src="{{link}}" alt="card"/></div>
+                  {% endfor %}
+                </div>
+              </div>
             </div>
 
             <div class="img-preview">
-              <div class="main-image"><img id="photo-big" alt="card" /></div>
+              <div class="main-slider-container">
+                <div class="main-slider">
+                  {% for link in info.fields.info_about_product.big_images %}
+                  <div class="main-image"><img src="{{link}}" alt="card" /></div>
+                  {% endfor %}
+                </div>
+              </div>
             </div>
           </div>
 
           <div class="description-right">
-            <div class="product-title">
-              <h1>{{info.fields.good_name}}</h1>
+            <div class="description-title">
+              <h1>{{info.fields.product_name}}</h1>
             </div>
 
-            <div class="description-status">
-              <div class="available">
-                <div class="symbol">
-                  <span class="material-symbols-outlined">check_circle</span>
-                  <!-- <span class="material-symbols-outlined">cancel</span> -->
+            <div class="description-info">
+              <div class="pricing">
+                {% if info.fields.price != 'Тільки по попередньому замовленню'%}
+                <div class="price-box">
+                  <span class="price">{{ info.fields.info_about_product.new_price }} {{ info.fields.currency }}</span>
                 </div>
-                <p>В наявності</p>
+                <div class="old-price-box">
+                  <span class="price">{{ info.fields.info_about_product.offers.price }} {{ info.fields.currency }}</span>
+                </div>
+                {% else %}
+                <div class="price-box">
+                  <span class="price">Тільки по передзамовленню</span>
+                </div>
+                {% endif %}
               </div>
 
-              <div class="star-rating symbol">
-                <span class="material-symbols-outlined">star</span>
-                <span class="material-symbols-outlined">star</span>
-                <span class="material-symbols-outlined">star</span>
-                <span class="material-symbols-outlined">star</span>
-                <span class="material-symbols-outlined">star</span>
+              <div class="availability available">
+                <div class="state available">
+                  <div class="symbol"><span class="material-symbols-outlined">check_circle</span></div>
+                  <p>В наявності</p>
+                </div>
+                <div class="state unavailable">
+                  <div class="symbol"><span class="material-symbols-outlined">cancel</span></div>
+                  <p>Немає в наявності</p>
+                </div>
               </div>
             </div>
 
-            <div class="buying">
-              <div class="price-box">
-                <h1>
-                  <span class="price">{{info.fields.info_about_good.new_price}}</span>
-                  <span class="currency">{{info.fields.info_about_good.offers.priceCurrency}}</span>
-                </h1>
-              </div>
-              <button class="buy-button">
+            <div class="description-split"></div>
+
+            <div class="description-buying">
+              <button class="buy-button" data-info='{"product_name": "{{info.fields.product_name}}", "image": "{{info.fields.image}}", "link_to_product": "{{info.fields.link_to_product}}", "currency": "{{info.fields.currency}}", "price": "{{info.fields.info_about_product.new_price}}", "old_price": "{{info.fields.info_about_product.offers.price}}"}'>
                 <div class="symbol">
                   <span class="material-symbols-outlined cart-icon">shopping_cart</span>
                 </div>
@@ -87,96 +93,59 @@
                 <div class="symbol">
                   <span class="material-symbols-outlined cart-icon">shopping_cart</span>
                 </div>
-                <h1>Купити в кредит</h1>
+                <h1>В кредит</h1>
               </button>
             </div>
 
-            <div class="warranty">
+            <div class="description-split"></div>
+
+            <div class="description-warranty">
               <div class="warranty-time">
                 <div class="symbol">
                   <span class="material-symbols-outlined">safety_check</span>
                 </div>
-                <p>Гарантія <span class="time-highlight">24 міс.</span></p>
+                <span class="hideable">Гарантія</span>
+                <span class="time-highlight">24 міс.</span>
               </div>
               <div class="warranty-exchange">
                 <div class="symbol">
                   <span class="material-symbols-outlined">autorenew</span>
                 </div>
-                <p><span class="time-highlight">14 днів</span> обмін повернення</p>
+                <span class="time-highlight">14 днів</span>
+                <span class="hideable">обмін повернення</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="characteristic">
-        <div class="title">
-          <h1>Характеристики</h1>
+      <section class="description">
+        <div class="description-card">
+          {{ info.fields.info_about_product.description }}
         </div>
-        <div class="card">
-          <div class="group-items">
-            {% for item in info.fields.info_about_good.additionalProperty%}
-              <div class="row">
-                <div class="row-element">{{item.name}}</div>
-                <div class="row-element">{{item.value}}</div>
-              </div>
-            {% endfor %}
-<!--            <div class="row">-->
-<!--              <div class="row-element">Призначення</div>-->
-<!--              <div class="row-element">-->
-<!--                <p>Для ноутбуків</p>-->
-<!--                <p>Для ПК</p>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            <div class="row">-->
-<!--              <div class="row-element">Застосування</div>-->
-<!--              <div class="row-element">Для ігор</div>-->
-<!--            </div>-->
-<!--            <div class="row">-->
-<!--              <div class="row-element">Тип підключення</div>-->
-<!--              <div class="row-element">Дротове</div>-->
-<!--            </div>-->
+      </section>
+
+      <section class="attributes">
+        <div class="attributes-card">
+          <div class="attribute-group-name">
+            <h1>Характеристики</h1>
           </div>
+          {% for item in info.fields.info_about_product.additionalProperty%}
+          <div class="attribute-group-item">
+            <div class="attribute-name">{{item.name}}</div>
+            <div class="attribute-dash"></div>
+            <div class="attribute-text">{{item.value}}</div>
+          </div>
+          {% endfor %}
         </div>
       </section>
     </div>
 
-    <div id="footerContainer">
-      {% include "included_templates/footer.html" %}
-    </div>
-    <script>console.log("{{info|safe}}")</script>
+    {% include "included_templates/footer.html" %}
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script type="text/javascript">
-      const sideImages = document.querySelectorAll(".side-image");
-      sideImages.forEach((image) => {
-          image.addEventListener("click", () => {
-              sideImages.forEach((image) => {
-                  image.classList.remove("active");
-              });
-              image.classList.add("active");
-          });
-      });
-      let small_images_text = "{{info.fields.info_about_good.small_images|safe}}".replace(/'/g, '"')
-      let big_images_text = "{{info.fields.info_about_good.big_images|safe}}".replace(/'/g, '"')
-      let smallImagesArray = JSON.parse(small_images_text)
-      let bigImagesArray = JSON.parse(big_images_text)
-      document.getElementById('photo-big').src = bigImagesArray[0]
-      $(document).ready(function() {
-        $('.photo-small').click(function() {
-          let srcFromImage = $(this).attr('src');
-          let index = smallImagesArray.indexOf(srcFromImage)
-          $('#photo-big').attr('src', bigImagesArray[index]);
-        });
-      });
-    //   let errorImages = document.querySelectorAll('.photo-small');
-    //   errorImages.forEach(function(image, index) {
-    //     image.onerror = function() {
-    //       image.src = image.src.replace("400x400.jpg", '420x420.png');
-    //     };
-    // });
-      document.getElementById("goBackButton").onclick = function() {
-            history.back();
-        };
-    </script>
+    <script src="{% static 'main/js/script-item.js' %}?version={% now 'U'%}"></script>
+    <script src="{% static 'main/js/search_func.js' %}?version={% now 'U'%}"></script>
+    <script src="{% static 'main/js/cart.js' %}?version={% now 'U'%}"></script>
+    <script src="{% static 'main/js/check_cart.js' %}?version={% now 'U'%}"></script>
   </body>
 </html>

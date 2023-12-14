@@ -2,12 +2,12 @@
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1em;
+  gap: 32px;
 }
 
 .item {
-  border: 1px solid #febd68;
-  border-radius: 12px;
+  border: 2px solid #febd68;
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
   padding: 16px;
